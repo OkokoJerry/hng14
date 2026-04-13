@@ -10,7 +10,6 @@ app.use(cors());
 
 
 const PORT = process.env.PORT || 3000;
-const API_URL = process.env.API_URL;
 
 
 app.get('/api/classify', async (req, res) => {
@@ -30,7 +29,7 @@ app.get('/api/classify', async (req, res) => {
         })
 
         //CALLING THE GENDERIZE API USING A NAME PARAMETER
-        const response = await axios.get(`${API_URL}?name=${name}`, {
+        const response = await axios.get(`https://api.genderize.io?name=${name}`, {
             timeout: 20000
         });
 
