@@ -4,7 +4,7 @@
 GET /api/classify?name={name}
 
 ## Example
-GET https://hng14.vercel.app/api/classify?name=John
+GET https://hng14-production.up.railway.app/api/classify?name=nina
 
 ## Setup locally
 npm install
