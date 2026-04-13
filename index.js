@@ -17,15 +17,15 @@ app.get('/api/classify', async (req, res) => {
         const { name } = req.query;
 
         //MISSING NAME PARAMETER EDGE CASE
-        if(!name) return res.status(400).json({
+        if(!name || name.trim() === '') return res.status(400).json({
             status: 'error',
-            message: 'Missing name parameter'
+            message: 'Missing or empty name parameter'
         });
 
         //PROVIDED PARAMETER NOT A STRING EDGE CASE
-        if(!isNaN(name)) return res.status(422).json({
+        if(!isNaN(name) && !isNaN(parseFloat(name))) return res.status(422).json({
             status: 'error',
-            message: 'Provided name parameter is not a string'
+            message: 'name is not a string'
         })
 
         //CALLING THE GENDERIZE API USING A NAME PARAMETER
