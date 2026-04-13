@@ -100,7 +100,6 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 dotenv.config()
 
-
 const app = express();
 const PORT = process.env.PORT;
 app.use(express.json());
@@ -173,7 +172,7 @@ app.get('/api/classify', async (req, res) => {
                 status: 'error',
                 message: "Service unavailable" })
         }
-        
+
         if (error.code === "ECONNREFUSED") {
             return res.status(503).json({
                 status: 'error',
