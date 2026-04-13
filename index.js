@@ -14,10 +14,11 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/api/classify', async (req, res) => {
     try {
-        const { name } = req.query;
+        let { name } = req.query;
+        name = name.trim();
 
         //MISSING NAME PARAMETER EDGE CASE
-        if(!name || name.trim() === '') return res.status(400).json({
+        if(!name || name === '') return res.status(400).json({
             status: 'error',
             message: 'Missing or empty name parameter'
         });
